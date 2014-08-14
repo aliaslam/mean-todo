@@ -1,0 +1,101 @@
+
+
+
+
+#list-container  {
+    padding:0;
+    margin-left:0;
+    width:75%;
+
+}
+
+#list-container ul {
+    list-style: none;
+    margin:0;
+    padding:0;
+}
+
+#list-container li:hover{
+    background-color:#FAFAFA;
+}
+
+.todo-title{
+    font-size: 25px;
+    line-height:40px;
+    border-bottom: 1px #ddd dotted;
+    padding-bottom:5px;
+    color:#333;
+}
+
+#list-container input.big {
+    font-size: 30px;
+    font-weight: bold;
+    width: 650px;
+    height: 44px;
+    padding: 5px;
+    color:#666;
+}
+
+
+/*
+
+*/
+
+#playground{
+    margin-top: 75px;
+}
+
+.debug{
+    width: 600px;
+    margin: 0 auto;
+    margin-top: 30px;
+}
+
+.todo-filter {
+    margin-bottom: 25px;
+}
+
+.todo-filter>li>a{
+    padding: 8px 12px;
+    font-size: 12px;
+}
+
+#todoAdd {
+    margin-left: 40px;
+}
+
+.todoField{
+    padding-left: 5px;
+    font-size: 20px;
+}
+
+#newTodoField{
+    margin: 20px;
+    width: 75%;
+}
+
+#todoSubmit{
+    margin-top: -5px;
+}
+
+.todoTask{
+    margin-bottom: 20px;
+}
+
+
+
+.edit-in-place span {
+    cursor: pointer;
+}
+
+.edit-in-place input {
+    display: none;
+}
+
+.edit-in-place.active span {
+    display: none;
+}
+
+.edit-in-place.active input {
+    display: inline-block;
+}

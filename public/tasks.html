@@ -1,0 +1,32 @@
+
+<div class="container"  ng-init="init();">
+
+    <h2>{{title}}</h2><br/>
+
+    <ul>
+        <li ng-repeat="task in uncompletedTasks" ng-model="deleted"">
+            <input type="checkbox" ng-click="markDone(task._id);"/>
+
+        <a href="#" editable-text="task.title">{{task.title || "empty" }}</a>
+
+
+            <a href="" ng-click="deleteTask(task._id);">X</a>
+        </li>
+    </ul>
+
+    <form ng-submit="addTask(newTask)">
+        <input type="text" ng-model="newTask" />
+        <button type="submit">Add</button>
+    </form>
+
+    <div>
+
+        <ul>
+            <li style="text-decoration:line-through;" ng-repeat="task in completedTasks" ng-model="deleted"">
+           {{task.title}}
+            </li>
+        </ul>
+
+    </div>
+
+</div>

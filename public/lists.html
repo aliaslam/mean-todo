@@ -1,0 +1,44 @@
+
+
+<div class="container" ng-init="init();">
+    <h1>Todo Lists</h1>
+
+    <div id="list-container">
+
+        <ul ui:sortable="sortableOptions" ng:model="lists">
+            <li   ng-repeat="list in lists">
+
+                <span class="label label-success">{{list.total_tasks}}</span>
+
+                <!--
+                <span class="label label-warning">6</span>
+                -->
+                <a class="todo-title" href="#/lists/{{list._id}}" editable-text="list.title" e-form="textBtnForm">{{list.title || "empty"}}</a>
+                <!--
+                <a href="" class="btn btn-danger btn-xs pull-right"><span class="glyphicon glyphicon-remove"></span></a>
+
+                -->
+
+                <button type="button" class="close pull-right" style="padding-top:8px;" ng-click="deleteTodo($index)">×</button>
+                <span class="pull-right">{{list.updated_at | date: "EEE, MMM d, yyyy, h:mm a"}}</span>
+
+            </li>
+
+        </ul>
+
+        <div>
+            <br/>
+            <form ng-submit="addList(newList)" role="form">
+                <div class="input-group">
+                    <input type="text" class="form-control big" ng-model="list.title">
+                    <button class="btn btn-primary btn-lg">ADD</button>                </div>
+                <br>
+
+            </form>
+        </div>
+
+    </div>
+
+</div>
+
+

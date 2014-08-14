@@ -1,0 +1,11 @@
+
+Delete a list
+Uncheck a done tast
+show the number of done and undone tasks next to each list
+reorder tasks
+move a task to another list
+filter by search term
+order alphabetically or by date created
+Save the reordering on the server
+css style
+Add the correct index in Mongo
