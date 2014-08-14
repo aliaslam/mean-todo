@@ -41,19 +41,28 @@ todo.controller("listCtrl", function ($scope, List) {
 
 
     $scope.sortableOptions = {
-        activate: function() {
-        },
+        //disabled: true,
 
         update: function(e, ui) {
-            console.log(ui);
+            var list_len = $scope.lists.length;
+            for (i = 0; i < list_len; i++) {
+                $scope.lists[i].display_order = i;
+            }
+/*
+            $scope.lists[0].$update(function(msg){
+                console.log('updated');
+                $scope.init();
+            });
+*/
 
-
-        },
-        stop: function(e, ui) {
-            console.log("stop");
         }
     };
 /*
+
+ var item = ui.item;
+ var fromIndex = ui.item.sortable.index;
+ var toIndex = ui.item.sortable.dropindex;
+ console.log('moved', item, fromIndex, toIndex);
 
     app.loadTasks = function(list_id) {
         $http.get(url + "/lists/" + list_id).success(function (todoList) {

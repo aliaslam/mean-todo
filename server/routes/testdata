@@ -1,0 +1,12 @@
+var express = require('express');
+var router = express.Router();
+
+router.get('/addtestdata', function (req, res) {
+    var todo = new Todo();
+    todo.user_id = "aaslam";
+    todo.title = "perfumes";
+    todo.save(function (err) {
+        if (err) res.send(err);
+        res.json({message: todo.title + ' Added!'});
+    });
+});
