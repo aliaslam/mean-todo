@@ -49,7 +49,18 @@ router.route('/lists/:id')
     })
 
     //Update a specific list by id
+
     .put(function(req, res){
+        var query = { _id : req.params.id };
+        Todo.findOneAndUpdate(query, req.body, {}, function(err, list){
+            if(err) res.send(err);
+            console.log('saved');
+            res.json({message: 'updated'});
+        });
+    })
+
+
+/*    .put(function(req, res){
         console.log('here');
         Todo.findById(req.params.id, function(err, list){
             if(err) res.send(err);
@@ -60,14 +71,15 @@ router.route('/lists/:id')
 
             list.save(function(err){
                 if(err) res.send(err);
-                res.json({message: 'updated'});
+                //res.json({message: 'updated'});
+                res.json(list);
             });
         });
-    })
+    })*/
 
     //Delete a specific list by id
     .delete(function(req, res){
-        Todo.remove({_id: req.params.list_id}, function(err, list){
+        Todo.remove({_id: req.params.id}, function(err, list){
             if(err) res.send(err);
             res.json({message: 'deleted'});
         });

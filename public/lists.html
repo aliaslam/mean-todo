@@ -1,5 +1,3 @@
-
-
 <div class="container" ng-init="init();">
     <h1>Todo Lists</h1>
 
@@ -19,9 +17,13 @@
 
                 -->
 
-                <button type="button" class="close pull-right" style="padding-top:8px;" ng-click="deleteTodo($index)">×</button>
-                <span class="pull-right">{{list.updated_at | date: "EEE, MMM d, yyyy, h:mm a"}}</span>
+                <div class="pull-right" confirm-delete on-confirm="delete(list)"></div>
 
+                <!--
+                <button type="button"  style="padding-top:8px;" ng-click="delete(list)">×</button>
+
+                <span class="pull-right">{{list.updated_at | date: "EEE, MMM d, yyyy, h:mm a"}}</span>
+                -->
             </li>
 
         </ul>
