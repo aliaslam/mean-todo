@@ -1,12 +1,16 @@
 <div class="container" ng-init="init();">
+<br/>
     <h1>Todo Lists</h1>
-
+<br/>
     <accordion>
         <div ui-sortable="sortableOptions" ng-model="lists">
             <accordion-group ng-repeat="list in lists" >
                 <accordion-heading>
+
                     <a class="todo-title" href="#/lists/{{list._id}}" editable-text="list.title" e-form="textBtnForm">{{list.title || "empty"}}</a>
-                    <span class="label label-success pull-right">{{list.total_tasks}}</span>
+                    <span style="margin-right:10px;margin-top:8px;" class="label label-success pull-left">{{list.total_tasks}}</span>
+
+                   <h5 class="pull-right"><span class="label label-info">{{list.updated_at | date: "MM/dd/yy - hh:mm a"}}</span></h5>
                 </accordion-heading>
 
                 <span style="float:right" confirm-delete on-confirm="delete(list)"></span>
@@ -65,5 +69,4 @@
 <!--
       <button type="button"  style="padding-top:8px;" ng-click="delete(list)">×</button>
 
-      <span class="pull-right">{{list.updated_at | date: "EEE, MMM d, yyyy, h:mm a"}}</span>
       -->
