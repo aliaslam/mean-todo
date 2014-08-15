@@ -1,5 +1,7 @@
 
 
+.nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
+
 .deleteConfirmation{
     width: 250px;
 }
@@ -22,8 +24,8 @@
 }
 
 .todo-title{
-    font-size: 25px;
-    line-height:40px;
+    font-size: 20px;
+    line-height:35px;
     border-bottom: 1px #ddd dotted;
     padding-bottom:5px;
     color:#333;

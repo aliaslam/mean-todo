@@ -1,46 +1,69 @@
 <div class="container" ng-init="init();">
     <h1>Todo Lists</h1>
 
-    <div id="list-container">
+    <accordion>
+        <div ui-sortable="sortableOptions" ng-model="lists">
+            <accordion-group ng-repeat="list in lists" >
+                <accordion-heading>
+                    <a class="todo-title" href="#/lists/{{list._id}}" editable-text="list.title" e-form="textBtnForm">{{list.title || "empty"}}</a>
+                    <span class="label label-success pull-right">{{list.total_tasks}}</span>
+                </accordion-heading>
 
-        <ul ui:sortable="sortableOptions" ng:model="lists">
-            <li   ng-repeat="list in lists">
+                <span style="float:right" confirm-delete on-confirm="delete(list)"></span>
 
-                <span class="label label-success">{{list.total_tasks}}</span>
+            Tasks
+            </accordion-group>
+        </div>
+    </accordion>
 
-                <!--
-                <span class="label label-warning">6</span>
-                -->
+
+    <!--
+        <div id="list-container" class="panel-group" ng-repeat="list in lists" ui:sortable="sortableOptions" ng:model="lists">
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
                 <a class="todo-title" href="#/lists/{{list._id}}" editable-text="list.title" e-form="textBtnForm">{{list.title || "empty"}}</a>
-                <!--
-                <a href="" class="btn btn-danger btn-xs pull-right"><span class="glyphicon glyphicon-remove"></span></a>
-
-                -->
-
                 <div class="pull-right" confirm-delete on-confirm="delete(list)"></div>
+            </div>
 
-                <!--
-                <button type="button"  style="padding-top:8px;" ng-click="delete(list)">×</button>
+            <div id="collapseOne" class="panel-collapse collapse in">
+                <div class="panel-body">
+                    <span class="label label-success">{{list.total_tasks}}</span>
+                    <span class="label label-success">{{list.total_tasks}}</span>
+                </div>
+            </div>
 
-                <span class="pull-right">{{list.updated_at | date: "EEE, MMM d, yyyy, h:mm a"}}</span>
-                -->
-            </li>
-
-        </ul>
-
-        <div>
-            <br/>
-            <form ng-submit="addList(newList)" role="form">
-                <div class="input-group">
-                    <input type="text" class="form-control big" ng-model="list.title">
-                    <button class="btn btn-primary btn-lg">ADD</button>                </div>
-                <br>
-
-            </form>
         </div>
 
     </div>
+    -->
+
+
+
+    <div>
+        <br/>
+        <form ng-submit="addList(newList)" role="form">
+            <div class="input-group">
+                <input type="text" class="form-control big" ng-model="list.title">
+                <button class="btn btn-primary btn-lg">ADD</button>                </div>
+            <br>
+
+        </form>
+    </div>
+
+
 
 </div>
 
 
+<!--
+          <span class="label label-warning">6</span>
+          -->
+<!--
+          <a href="" class="btn btn-danger btn-xs pull-right"><span class="glyphicon glyphicon-remove"></span></a>
+          -->
+<!--
+      <button type="button"  style="padding-top:8px;" ng-click="delete(list)">×</button>
+
+      <span class="pull-right">{{list.updated_at | date: "EEE, MMM d, yyyy, h:mm a"}}</span>
+      -->

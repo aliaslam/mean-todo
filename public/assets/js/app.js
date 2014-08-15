@@ -1,4 +1,4 @@
-var todo = angular.module("todo", ['ngRoute', 'ngResource', 'xeditable', 'todo.services', 'ui.sortable']);
+var todo = angular.module("todo", ['ngRoute', 'ngResource', 'xeditable', 'todo.services', 'ui.sortable', 'ui.bootstrap']);
 
 todo.run(function(editableOptions) {
     editableOptions.theme = 'bs3';
@@ -53,10 +53,10 @@ todo.controller("listCtrl", function ($scope, List) {
             var list_len = $scope.lists.length;
             for (i = 0; i < list_len; i++) {
                 $scope.lists[i].display_order = i;
-                $scope.lists[i].$update(function(msg){
+                /*$scope.lists[i].$update(function(msg){
                     console.log('updated');
                     //$scope.init();
-                });
+                });*/
             }
 
 
