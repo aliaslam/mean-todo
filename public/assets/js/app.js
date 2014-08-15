@@ -39,12 +39,19 @@ todo.controller("listCtrl", function ($scope, List) {
         });
     };
 
+
+    $scope.update = function(list){
+        list.$update(function(){
+           $scope.init();
+        });
+
+    }
+
     $scope.delete = function(list){
         list.$delete(function(){
             $scope.init();
         });
     };
-
 
     $scope.sortableOptions = {
         //disabled: true,
@@ -53,10 +60,10 @@ todo.controller("listCtrl", function ($scope, List) {
             var list_len = $scope.lists.length;
             for (i = 0; i < list_len; i++) {
                 $scope.lists[i].display_order = i;
-                /*$scope.lists[i].$update(function(msg){
+                $scope.lists[i].$update(function(msg){
                     console.log('updated');
-                    //$scope.init();
-                });*/
+                    $scope.init();
+                });
             }
 
 
