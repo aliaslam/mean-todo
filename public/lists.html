@@ -7,15 +7,15 @@
             <accordion-group ng-repeat="list in lists" >
                 <accordion-heading>
                     <a class="todo-title" editable-text="list.title" onaftersave="update(list);" e-form="editTitle">{{list.title || "empty"}}</a>
-                    <span ng-click="$event.stopPropagation();" style="margin-right:2px;margin-top:8px;" class="label label-success pull-left">{{list.total_tasks}}</span>
-                    <span ng-click="$event.stopPropagation();" style="margin-top:8px;" class="label label-danger pull-left">{{list.total_tasks}}</span>
+                    <span ng-click="$event.stopPropagation();" style="margin-right:2px;margin-top:8px;" class="label label-success pull-left">{{list.total_tasks|| 0}}</span>
+                    <span ng-click="$event.stopPropagation();" style="margin-top:8px;" class="label label-danger pull-left">{{list.total_tasks || 0}}</span>
                     <a style="margin:9px 20px 0 10px;" href="" ng-click="editTitle.$show();$event.stopPropagation();" ng-hide="editTitle.$visible;$event.stopPropagation();" class="label label-warning pull-left">EDIT</a>
                    <h5 class="pull-right" ng-click="$event.stopPropagation();"><span class="label label-info">{{list.updated_at | date: "MM/dd/yy - hh:mm a"}}</span></h5>
                 </accordion-heading>
 
                 <span style="float:right" confirm-delete on-confirm="delete(list)"></span>
 
-            Tasks
+            {{list | json}}
             </accordion-group>
         </div>
     </accordion>
@@ -48,9 +48,10 @@
         <br/>
         <form ng-submit="addList(newList)" role="form">
             <div class="input-group">
-                <input type="text" class="form-control big" ng-model="list.title">
-                <button class="btn btn-primary btn-lg">ADD</button>                </div>
-            <br>
+                <input type="text" class="form-control big" ng-model="newList">
+                <button class="btn btn-primary btn-lg">ADD</button>
+            </div>
+
 
         </form>
     </div>

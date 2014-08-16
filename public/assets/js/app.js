@@ -20,81 +20,54 @@ todo.config(function($routeProvider){
 });
 
 
-
-
-
 todo.controller("listCtrl", function ($scope, List) {
+
+
 
     $scope.init = function(){
         $scope.lists = List.query();
     };
 
-    $scope.list = new List();
-
-    $scope.addList  = function(){
-        $scope.list.$save(function(){
-            $scope.lists = List.query();
-            $scope.newList = '';
-
+    $scope.addList  = function(newList){
+        var list = new List();
+        list.title = newList;
+        list.$save(function(newReturnedList){
+            $scope.lists.unshift(newReturnedList);
         });
+        $scope.newList = '';
     };
 
 
     $scope.update = function(list){
-        list.$update(function(){
-           $scope.init();
-        });
+        list.$update();
+    };
 
-    }
-
-    $scope.delete = function(list){
-        list.$delete(function(){
-            $scope.init();
+    $scope.delete = function(listToDel){
+        listToDel.$delete(function(res){
+            if(res.message == 'deleted'){
+                $scope.lists = $scope.lists.filter(function(list){
+                    return list._id !== listToDel._id;
+                });
+            }
         });
     };
 
     $scope.sortableOptions = {
         //disabled: true,
 
-        update: function(e, ui) {
-            var list_len = $scope.lists.length;
+        stop: function(e, ui) {
+            var lists = ui.item.scope().lists;
+            var list_len = lists.length;
             for (i = 0; i < list_len; i++) {
-                $scope.lists[i].display_order = i;
-                $scope.lists[i].$update(function(msg){
-                    console.log('updated');
-                    $scope.init();
-                });
+                lists[i].display_order = i;
+                lists[i].$update();
             }
-
-
         }
     };
-/*
 
- var item = ui.item;
- var fromIndex = ui.item.sortable.index;
- var toIndex = ui.item.sortable.dropindex;
- console.log('moved', item, fromIndex, toIndex);
-
-    app.loadTasks = function(list_id) {
-        $http.get(url + "/lists/" + list_id).success(function (todoList) {
-            app.todoList.title = todoList.title;
-            app.todoList.tasks = todoList.tasks;
-        });
-    };
-
-    function loadLists() {
-        $http.get(url + '/lists' ).success(function (lists) {
-            app.lists = lists;
-        });
-    }
-    loadLists();
-*/
 });
 
-
-//===================================================================================================================
-
+/*
 todo.controller("taskCtrl", function($scope, List, $routeParams){
 
     $scope.init = function() {
@@ -158,3 +131,4 @@ todo.controller("taskCtrl", function($scope, List, $routeParams){
     };
 
 });
+*/
