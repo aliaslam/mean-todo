@@ -54,7 +54,7 @@ todo.controller("listCtrl", function ($scope, List) {
 
     $scope.sortableOptions = {
         //disabled: true,
-
+        placeholder: "task-placeholder-highlight",
         stop: function(e, ui) {
             var lists = ui.item.scope().lists;
             var list_len = lists.length;

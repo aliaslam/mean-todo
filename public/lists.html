@@ -3,7 +3,7 @@
     <h1>Todo Lists</h1>
 <br/>
     <accordion>
-        <div ui-sortable="sortableOptions" ng-model="lists">
+        <div ui-sortable="sortableOptions" ng-model="lists" class="grabbable">
             <accordion-group ng-repeat="list in lists" >
                 <accordion-heading>
                     <a class="todo-title" editable-text="list.title" onaftersave="update(list);" e-form="editTitle">{{list.title || "empty"}}</a>
