@@ -11,7 +11,7 @@ var TodoSchema = new Schema({
         title: {type: String, required: true},
         display_order: {type: Number},
         updated_at: {type:Date, default: Date.now},
-        completed_at: {type:Date, default: Date.now},
+        completed_at: {type:Date},
         completed: {type:Boolean}
     }]
 });

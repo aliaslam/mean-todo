@@ -2,8 +2,6 @@
 
 .nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
 
-
-
 .grabbable {
     cursor: move; /* fallback if grab cursor is unsupported */
     cursor: grab;
@@ -42,7 +40,7 @@
 
 
 .todo-title{
-    font-size: 2em;
+    font-size: 1.6em;
     color:#666;
 }
 
@@ -55,6 +53,9 @@
     color:#666;
 }
 
+.task{
+    font-size: 25px;
+}
 
 /*
 

@@ -15,33 +15,47 @@
 
                 <span style="float:right" confirm-delete on-confirm="delete(list)"></span>
 
-            {{list | json}}
+
+                <!-- Tasks Start -->
+
+                <div class="container">
+
+                    <ul ui-sortable>
+                        <li ng-repeat="task in list.tasks | filter:{completed:'!true'}">
+                        <input type="checkbox" ng-click="markDone(task, list);"/>
+
+                        <a class="task" href="#" editable-text="task.title">{{task.title || "empty" }}</a>
+
+                        <a href="" ng-click="deleteTask(task, list);">X</a>
+                        </li>
+                    </ul>
+
+                    <form ng-submit="addTask(list.newTask, list)">
+                        <input type="text" ng-model="list.newTask" />
+                        <button type="submit">Add</button>
+                    </form>
+
+                    <div>
+
+                        <ul>
+                            <li style="text-decoration:line-through;" ng-repeat="task in list.tasks | filter:{completed:'true'}">
+                            <input type="checkbox" checked ng-click="markUndone(task, list);"/>
+                            {{task.title}}
+                            <a href="" ng-click="deleteTask(task, list);">X</a>
+
+                            </li>
+                        </ul>
+
+                    </div>
+
+                </div>
+
+                <!-- Tasks End -->
+
+                {{list | json}}
             </accordion-group>
         </div>
     </accordion>
-
-
-    <!--
-        <div id="list-container" class="panel-group" ng-repeat="list in lists" ui:sortable="sortableOptions" ng:model="lists">
-
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <a class="todo-title" href="#/lists/{{list._id}}" editable-text="list.title" e-form="textBtnForm">{{list.title || "empty"}}</a>
-                <div class="pull-right" confirm-delete on-confirm="delete(list)"></div>
-            </div>
-
-            <div id="collapseOne" class="panel-collapse collapse in">
-                <div class="panel-body">
-                    <span class="label label-success">{{list.total_tasks}}</span>
-                    <span class="label label-success">{{list.total_tasks}}</span>
-                </div>
-            </div>
-
-        </div>
-
-    </div>
-    -->
-
 
 
     <div>
