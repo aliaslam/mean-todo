@@ -17,7 +17,7 @@ function fetchLists(match, fetchOne, callback){
         ] , function(err, data){
                 if(err) res.send(err);
                 if(fetchOne) data = data[0];
-                callback(data);
+            callback(data);
         }
     );
 }
@@ -46,7 +46,6 @@ router.route('/lists')
 router.route('/lists/:id')
     //Get 1 specific list by id
     .get(function(req, res){
-        console.log('fetching one');
         Todo.findById(req.params.id, function(err, list){
             if(err) res.send(err);
             res.json(list);
@@ -59,7 +58,7 @@ router.route('/lists/:id')
         var query = { _id : req.params.id };
         Todo.findOneAndUpdate(query, req.body, function(err, list){
             if(err) res.send(err);
-            fetchLists({ user_id : 'aaslam', _id : req.params.id }, true, function(data){
+            fetchLists({ user_id : 'aaslam', _id : list._id }, true, function(data){
                 res.json(data);
             });
         });

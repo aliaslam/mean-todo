@@ -41,8 +41,6 @@
                             <li style="text-decoration:line-through;" ng-repeat="task in list.tasks | filter:{completed:'true'}">
                             <input type="checkbox" checked ng-click="markUndone(task, list);"/>
                             {{task.title}}
-                            <a href="" ng-click="deleteTask(task, list);">X</a>
-
                             </li>
                         </ul>
 

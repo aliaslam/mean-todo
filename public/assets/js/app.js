@@ -65,7 +65,9 @@ todo.controller("listCtrl", function ($scope, $filter, List) {
     $scope.addTask = function(newTask, list){
         list.tasks.unshift({title: newTask, completed:false});
         list.newTask = '';
-        list.$update();
+        list.$update(function(updatedList){
+            list.tasks = updatedList.tasks;
+        });
     };
 
     $scope.deleteTask = function(taskToDelete, list){
