@@ -4,5 +4,4 @@ angular.module('todo',[]).controller('listCtrl', [function($scope, $http, 'ListS
     ListService.getLists().success(function(lists){
         $scope.lists = lists;
     });
-
 }]);

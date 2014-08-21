@@ -10,10 +10,6 @@ todo.config(function($routeProvider){
             templateUrl: 'lists.html',
             controller: 'listCtrl'
         }).
-        when('/lists/:id', {
-            templateUrl: 'tasks.html',
-            controller: 'taskCtrl'
-        }).
         otherwise('/', {
             redirectTo: '/'
         });
@@ -49,9 +45,9 @@ todo.controller("listCtrl", function ($scope, $filter, List) {
         list.$update();
     };
 
-    $scope.sortableOptions = {
+    $scope.sortableListOptions = {
         //disabled: true,
-        placeholder: "task-placeholder-highlight",
+        placeholder: "list-placeholder-highlight",
         stop: function(e, ui) {
             var lists = ui.item.scope().lists;
             var list_len = lists.length;
@@ -59,6 +55,20 @@ todo.controller("listCtrl", function ($scope, $filter, List) {
                 lists[i].display_order = i;
                 lists[i].$update();
             }
+        }
+    };
+
+
+    $scope.sortableTaskOptions = {
+        placeholder: "task-placeholder-highlight",
+        stop: function(e, ui) {
+            var list = ui.item.scope().list;
+            var tasks = list.tasks;
+            var task_len = tasks.length;
+            for (i = 0; i < task_len; i++) {
+                tasks[i].display_order = i;
+            }
+            list.$update();
         }
     };
 

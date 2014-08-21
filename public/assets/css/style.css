@@ -15,10 +15,18 @@
     cursor: -webkit-grabbing;
 }
 
-.task-placeholder-highlight{
+
+.list-placeholder-highlight{
     border: 3px dashed #999;
     height:75px;
 }
+
+.task-placeholder-highlight{
+    border: 2px dashed #999;
+    height:40px;
+}
+
+
 
 
 .deleteConfirmation{
