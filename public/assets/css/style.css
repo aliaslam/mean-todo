@@ -2,6 +2,49 @@
 
 .nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
 
+
+.task{
+    font-size: 22px;
+}
+
+.task a {
+    text-decoration: none;
+    color: #333;
+    border:0;
+}
+
+.task a:hover {
+    border-bottom: 1px dashed #333;
+    color: #333;
+}
+
+
+
+.todo-title a {
+    font-size: 1.6em;
+    text-decoration: none;
+    color: #333;
+    border:0;
+}
+
+.todo-title a:hover{
+    text-decoration: none;
+    border-bottom: 1px dashed #333;
+    color: #333;
+}
+
+
+.task-complete {
+    background: #f3f3f3;
+    color: #999;
+}
+
+.task-complete label {
+    text-decoration: line-through;
+}
+
+
+
 .grabbable {
     cursor: move; /* fallback if grab cursor is unsupported */
     cursor: grab;
@@ -23,7 +66,7 @@
 
 .task-placeholder-highlight{
     border: 2px dashed #999;
-    height:40px;
+    height:50px;
 }
 
 
@@ -47,11 +90,6 @@
 }
 
 
-.todo-title{
-    font-size: 1.6em;
-    color:#666;
-}
-
 #list-container input.big {
     font-size: 30px;
     font-weight: bold;
@@ -61,9 +99,7 @@
     color:#666;
 }
 
-.task{
-    font-size: 25px;
-}
+
 
 /*
 

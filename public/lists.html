@@ -6,7 +6,7 @@
         <div ui-sortable="sortableListOptions" ng-model="lists" class="grabbable">
             <accordion-group ng-repeat="list in lists" >
                 <accordion-heading>
-                    <a class="todo-title" editable-text="list.title" onaftersave="update(list);" e-form="editTitle">{{list.title || "empty"}}</a>
+                    <span class="todo-title"><a editable-text="list.title" onaftersave="update(list);" e-form="editTitle">{{list.title || "empty"}}</a></span>
                     <span ng-click="$event.stopPropagation();" style="margin-right:2px;margin-top:8px;" class="label label-success pull-left">{{list.total_tasks|| 0}}</span>
                     <span ng-click="$event.stopPropagation();" style="margin-top:8px;" class="label label-danger pull-left">{{list.total_tasks || 0}}</span>
                     <a style="margin:9px 20px 0 10px;" href="" ng-click="editTitle.$show();$event.stopPropagation();" ng-hide="editTitle.$visible;$event.stopPropagation();" class="label label-warning pull-left">EDIT</a>
@@ -15,39 +15,37 @@
 
                 </accordion-heading>
 
-
-
-                <!-- Incomplete Tasks Start -->
-                <div style="float:left;border: 1px solid #ccc; width:49%;height:250px;vertical-align:top;margin-right:10px;overflow: scroll;">
-                    <ul ui-sortable="sortableTaskOptions" ng-model="list.tasks" class="grabbable">
-                       <li  ng-repeat="task in list.tasks | filter:{completed:'!true'}"> <input type="checkbox" ng-click="markDone(task, list);">
-                           <a class="task" href="#" editable-text="task.title" onaftersave="update(list);">{{task.title || "empty" }}</a>
-                           <a href="" ng-click="deleteTask(task, list);">X</a>
-                       </li>
-                    </ul>
-
-                    <form ng-submit="addTask(list.newTask, list)">
-                        <input type="text" ng-model="list.newTask" />
-                        <button type="submit">Add</button>
-                    </form>
-                </div>
-                <!-- Incomplete Tasks End -->
-
-
-
-                <!-- Completed Tasks Start -->
-                <div  style="float:right;border: 1px solid #ccc;width:50%;height:250px;vertical-align:top;overflow: scroll;">
-                    <table class="table">
-                        <tr ng-repeat="task in list.tasks | filter:{completed:'true'}">
-                            <td> <input type="checkbox" checked ng-click="markUndone(task, list);"/></td>
-                            <td style="text-align:left;text-decoration:line-through;">{{task.title}}</td>
-                        </tr>
-                    </table>
-                </div>
-                <!-- Completed Tasks End -->
+                    <!-- Incomplete Tasks Start -->
+                    <div class="list-group" ui-sortable="sortableTaskOptions" ng-model="list.tasks" class="grabbable">
+                        <div class="list-group-item task" ng-repeat="task in list.tasks | filter:{completed:'!true'}" ng-class="{'task-complete': task.complete}">
+                            <span class="close" ng-click="deleteTask(task, list);">&times;</span>
+                            <label>
+                                <input type="checkbox" ng-click="markDone(task, list);" ng-model="task.complete">
+                                <span> <a class="task" href="#" editable-text="task.title" onaftersave="update(list);">{{task.title || "empty" }}</a></span>
+                            </label>
+                        </div>
+                        <div class="list-group-item">
+                            <form ng-submit="addTask(list.newTask, list)">
+                                <input type="text" ng-model="list.newTask" />
+                                <button type="submit">Add</button>
+                            </form>
+                        </div>
+                    </div>
+                    <!-- Incomplete Tasks End -->
 
 
 
+                    <!-- Completed Tasks Start -->
+                    <div class="list-group">
+                        <div class="list-group-item task-complete" ng-repeat="task in list.tasks | filter:{completed:'true'}">
+                            <span class="close" ng-click="deleteTask(task, list);">&times;</span>
+                            <label>
+                                <input type="checkbox" checked ng-click="markUndone(task, list);">
+                                <span>{{task.title || "empty" }}</span>
+                            </label>
+                        </div>
+                    </div>
+                    <!-- Completed Tasks End -->
 
             </accordion-group>
         </div>

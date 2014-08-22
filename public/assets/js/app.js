@@ -1,4 +1,4 @@
-var todo = angular.module("todo", ['ngRoute', 'ngResource', 'xeditable', 'todo.services', 'ui.sortable', 'ui.bootstrap']);
+var todo = angular.module("todo", ['ngRoute', 'ngResource', 'xeditable', 'todo.services', 'ui.sortable', 'ui.bootstrap', 'ngAnimate']);
 
 todo.run(function(editableOptions) {
     editableOptions.theme = 'bs3';
