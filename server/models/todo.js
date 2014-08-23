@@ -19,19 +19,3 @@ var TodoSchema = new Schema({
 
 module.exports = mongoose.model('todo', TodoSchema);
 
-
-/*
-var Task = new Schema({
-    title: {type:String, required: true },
-    updated_at: {type:Date, default: Date.now},
-    completed_at: {type:Date, default: Date.now},
-    completed: {type:Boolean}
-});
-var List = new Schema({
-    user_id: {type:String},
-    title: {type:String,required: true },
-    updated_at: {type:Date, default: Date.now},
-    todos: [Tast]
-});
-*/
-

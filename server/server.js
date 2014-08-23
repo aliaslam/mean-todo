@@ -1,14 +1,14 @@
-//Setup
 
 var express = require('express');
 var mongoose = require("mongoose");
 var bodyParser = require("body-parser");
 var cors = require("cors");
+var passport = require("passport");
+var morgan = require("morgan");
 
 var app = express();
 
-var time = 0;
-
+app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: true
@@ -16,8 +16,18 @@ app.use(bodyParser.urlencoded({
 app.use(cors());
 
 //DB Connection
-var dbName = "todo";
-mongoose.connect('mongodb://localhost/' + dbName);
+var dbConfig = require('./config/db.js');
+mongoose.connect(dbConfig.url, function (err, res) {
+    if (err) {
+        console.log('Connection refused to ' + dbConfig.url);
+        console.log(err);
+    }
+    else {
+        console.log('Connection successful to: ' + dbConfig.url);
+    }
+});
+
+
 
 // Error Handling
 app.use(function(err, req, res, next) {
@@ -25,8 +35,8 @@ app.use(function(err, req, res, next) {
 });
 
 //Routes
-var app_routes = require('./routes/lists');
-app.use('/api', app_routes);
+var appRoutes = require('./routes/lists');
+app.use('/api', appRoutes);
 
 //Start the server
 var port = process.env.PORT || 4000;

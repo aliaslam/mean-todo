@@ -5,3 +5,25 @@ angular.module('todo.services',[]).factory('List',function($resource){
         });
 });
 
+
+/*
+angular.module('todo.services',[]).factory('UserService', function($http){
+   return{
+        login: function(username, password){
+
+        },
+
+        logout: function(){
+
+        }
+
+   }
+});
+
+
+
+angular.module('todo.services',[]).factory('AuthService',function(){
+    var auth = {auth: false};
+    return auth;
+});
+*/
