@@ -5,8 +5,12 @@ var bodyParser = require("body-parser");
 var cors = require("cors");
 var passport = require("passport");
 var morgan = require("morgan");
-
 var app = express();
+
+
+// require('./config/passport')(passport); // pass passport for configuration
+
+
 
 app.use(morgan('dev'));
 app.use(bodyParser.json());

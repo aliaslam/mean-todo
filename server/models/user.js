@@ -2,9 +2,15 @@ var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
 var UserSchema = new Schema({
-    local:{
+    local: {
         email: {type: String, required: true},
         password: {type: String, required: true }
+    },
+    facebook: {
+        id: {type: String, required: true},
+        token: {type: String, required: true},
+        name: {type: String, required: true},
+        email: {type: String, required: true}
     }
 
 });
