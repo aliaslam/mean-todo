@@ -13,17 +13,17 @@
                     <span class="pull-right"confirm-delete on-confirm="delete(list)" ng-click="$event.stopPropagation();"></span>
                 </accordion-heading>
 
+                {{list | json}}
 
-                    &nbsp;<div class="label label-info pull-right">{{list.updated_at | date: "MM/dd/yy - hh:mm a"}}</div>
+
+                &nbsp;<div class="label label-info pull-right">{{list.updated_at | date: "MM/dd/yy - hh:mm a"}}</div>
 
                 <!-- Incomplete Tasks Start -->
                     <div class="list-group" ui-sortable="sortableTaskOptions" ng-model="list.tasks" class="grabbable">
-                        <div class="list-group-item task" ng-repeat="task in list.tasks | filter:{completed:'!true'}" ng-class="{'task-complete': task.complete}">
+                        <div class="list-group-item task" ng-repeat="task in list.tasks | filter:{completed:'!true'}">
                             <span class="close" ng-click="deleteTask(task, list);">&times;</span>
-                            <label>
-                                <input type="checkbox" ng-click="markDone(task, list);" ng-model="task.complete">
-                                <span> <a class="task" href="#" editable-text="task.title" onaftersave="update(list);">{{task.title || "empty" }}</a></span>
-                            </label>
+                            <input type="checkbox" ng-click="markDone(task, list);" ng-model="task.completed">
+                            <span> <a class="task" href="#" editable-text="task.title" onaftersave="update(list);">{{task.title || "empty" }}</a></span>
                         </div>
                         <div class="list-group-item">
                             <form ng-submit="addTask(list.newTask, list)">
@@ -53,6 +53,7 @@
     </accordion>
 
 
+
     <!-- Add new list start -->
     <div>
         <br/>
@@ -64,6 +65,7 @@
         </form>
     </div>
     <!-- Add new list end -->
+
 
 
 </div>
