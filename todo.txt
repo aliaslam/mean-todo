@@ -1,11 +1,10 @@
 
-Delete a list
-Uncheck a done tast
 show the number of done and undone tasks next to each list
-reorder tasks
 move a task to another list
 filter by search term
 order alphabetically or by date created
-Save the reordering on the server
-css style
+Complete the Passport local integration
+When a new task gets added, glow fade it
+After adding a task, put the focus on the text field again
+Make all text fields longer
 Add the correct index in Mongo
